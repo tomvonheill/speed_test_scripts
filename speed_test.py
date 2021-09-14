@@ -22,12 +22,11 @@ class SpeedClass:
 
 if __name__ == "__main__":
     engine = get_engine(get_db_config('speed_test'))
-    query = get_sql('./models/add_test.sql')
+    query = get_sql('/home/thomas/repos/speed_mapper/models/add_test.sql')
     format = "%(asctime)s: %(message)s"
     logging.basicConfig(format=format, level=logging.INFO,
                         datefmt="%H:%M:%S")
-    logging.info("logging is working")
-    subprocess_result = subprocess.Popen('iwgetid',shell=True,stdout=subprocess.PIPE)
+    subprocess_result = subprocess.Popen('/sbin/iwgetid',shell=True,stdout=subprocess.PIPE)
     subprocess_output = subprocess_result.communicate()[0],subprocess_result.returncode
     network_name = subprocess_output[0].decode('utf-8').split('"')[1]
     logging.info(network_name)
@@ -51,6 +50,4 @@ if __name__ == "__main__":
         con.execute(query)
     end_time = datetime.datetime.now()
     logging.info(end_time-start_time)
-    logging.info(dl_speed)
-    logging.info(up_speed)
 

@@ -2,7 +2,7 @@ import configparser
 import sqlalchemy as sqla
 def get_db_config(section):
     config = configparser.ConfigParser()
-    config.read('db_config.ini')
+    config.read('/home/thomas/repos/speed_mapper/db_config.ini')
     fields = ['db_name', 'db_type','host', 'username', 'password', 'port']
     final_config = {}
     for field in fields:
